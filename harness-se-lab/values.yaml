@@ -50,6 +50,6 @@ volumeMounts: []
 # Configurations for autoscaling (optional)
 autoscaling:
   enabled: true
-  minReplicas: 2
-  maxReplicas: 5
+  minReplicas: 1
+  maxReplicas: 1
   targetCPUUtilizationPercentage: 80
