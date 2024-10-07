@@ -2,7 +2,6 @@
 replicaCount: 1 # Number of replicas for the deployment
 
 image:
-  repository: <+input> # Harness input variable for primaryArtifactRef
   pullPolicy: Always
   tag: "latest"  # Placeholder tag; usually this would be dynamically set by the CI/CD pipeline
 
