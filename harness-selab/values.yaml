@@ -1,5 +1,5 @@
 # Metadata and general configuration
-namespace: default
+namespace: <+serviceVariables.namespace>
 replicaCount: 1 # Number of replicas for the deployment
 
 image:
