@@ -1,5 +1,6 @@
 # Metadata and general configuration
 namespace: <+serviceVariables.namespace>
+createNamespace: true
 replicaCount: 1 # Number of replicas for the deployment
 
 image:
