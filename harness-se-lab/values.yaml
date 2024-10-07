@@ -1,0 +1,55 @@
+# Metadata and general configuration
+replicaCount: 1 # Number of replicas for the deployment
+
+image:
+  repository: <+input> # Harness input variable for primaryArtifactRef
+  pullPolicy: Always
+  tag: "latest"  # Placeholder tag; usually this would be dynamically set by the CI/CD pipeline
+
+# Kubernetes resource limits and requests
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# Service configuration
+service:
+  type: ClusterIP  # Service type (could be ClusterIP, NodePort, LoadBalancer)
+  port: 80         # Port on which the service will be exposed
+  targetPort: 80 # Port the application listens on inside the pod
+
+# Liveness and readiness probes to ensure application health
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 80
+  initialDelaySeconds: 30
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: 80
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+# Environment-specific variables (you can use Harness inputs here too)
+env:
+  - name: ENVIRONMENT
+    value: "labs" # Referencing the environment name 'labs'
+  - name: DEBUG
+    value: "false"
+
+# Volume mounts and volumes (if required)
+volumes: []
+volumeMounts: []
+
+# Configurations for autoscaling (optional)
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
