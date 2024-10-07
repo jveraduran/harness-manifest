@@ -1,4 +1,5 @@
 # Metadata and general configuration
+namespace: default
 replicaCount: 1 # Number of replicas for the deployment
 
 image:
