@@ -3,9 +3,7 @@ namespace: <+serviceVariables.namespace>
 createNamespace: true
 replicaCount: 1 # Number of replicas for the deployment
 
-image:
-  pullPolicy: Always
-  tag: "latest"  # Placeholder tag; usually this would be dynamically set by the CI/CD pipeline
+image: <+artifacts.primary.image>
 
 # Kubernetes resource limits and requests
 resources:

@@ -38,6 +38,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: iosdesign/harness-se-lab:harnesssebuildlabs-1
+        image: {{.Values.image}}
         ports:
         - containerPort: 80
