@@ -1,7 +1,15 @@
+{{- if .Values.createNamespace}}
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{.Values.namespace}}
+---
+{{- end}}
 apiVersion: v1
 kind: Service
 metadata:
   name: my-nginx-svc
+  namespace: {{.Values.namespace}}
   labels:
     app: nginx
 spec:
@@ -15,6 +23,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nginx
+  namespace: {{.Values.namespace}}
   labels:
     app: nginx
 spec:
